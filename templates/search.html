@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock title %}
+
+{% block body %}
+<section class="container py-5">
+  <div class="glass-card p-4 p-lg-5 mb-4">
+    <h1 class="mb-2">Search Results</h1>
+    {% if query %}
+      <p class="mb-0 text-muted">Showing {{ total_results }} result{{ total_results|pluralize }} for "<strong>{{ query }}</strong>".</p>
+    {% else %}
+      <p class="mb-0 text-muted">Enter a keyword in the search box to find products or pages.</p>
+    {% endif %}
+  </div>
+
+  {% if query %}
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <h3 class="mb-3">Products</h3>
+        {% if product_results %}
+          <div class="row g-3">
+            {% for product in product_results %}
+              <div class="col-md-6">
+                <div class="card h-100 border-0 shadow-sm hover-card">
+                  <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}" style="height: 200px; object-fit: cover;">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text text-muted mb-2">{{ product.description }}</p>
+                    <span class="badge text-bg-secondary">{{ product.category }}</span>
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-warning">No matching products found.</div>
+        {% endif %}
+      </div>
+      <div class="col-lg-4">
+        <h3 class="mb-3">Pages</h3>
+        {% if page_results %}
+          <div class="list-group shadow-sm">
+            {% for page in page_results %}
+              <a href="{{ page.url }}" class="list-group-item list-group-item-action">
+                {{ page.name }}
+              </a>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="alert alert-warning">No matching pages found.</div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+</section>
+{% endblock body %}

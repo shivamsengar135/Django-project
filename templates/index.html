@@ -5,243 +5,255 @@
 
 {% block body %}
 <style>
-  #carouselExample {
-    width: 100%;
-    height: 80vh;
-    margin: 0;
+  .hero-wrap {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    background: linear-gradient(130deg, #1a1f36 0%, #2f1c56 45%, #5f1f1b 100%);
+    color: #fff;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(2px);
+    opacity: 0.18;
+    z-index: 0;
+  }
+
+  .orb-1 { width: 240px; height: 240px; background: #ffd166; top: -60px; right: -50px; }
+  .orb-2 { width: 180px; height: 180px; background: #4cc9f0; bottom: -40px; left: -30px; }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .stat-card {
+    border: 0;
+    border-radius: 16px;
+    background: #ffffff;
+    box-shadow: 0 10px 24px rgba(29, 23, 40, 0.08);
+  }
+
+  .highlight-card {
+    border: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    min-height: 220px;
+    color: #fff;
+    background-size: cover;
+    background-position: center;
     position: relative;
   }
-  #carouselExample img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
-  .carousel-caption {
+
+  .highlight-card::before {
+    content: "";
     position: absolute;
-    bottom: 45px;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 15px;
-    text-align: center;
-    color: white;
+    inset: 0;
+    background: linear-gradient(160deg, rgba(0,0,0,0.15), rgba(0,0,0,0.7));
+  }
+
+  .highlight-body {
+    position: relative;
+    z-index: 1;
+    padding: 22px;
+  }
+
+  .promo-banner {
+    border-radius: 24px;
+    background-image: linear-gradient(90deg, rgba(16,18,38,0.92), rgba(16,18,38,0.55)), url("https://images.unsplash.com/photo-1505394033641-40c6ad1178d7?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+  }
+
+  .testimonial {
+    border-left: 4px solid #e85d04;
+    background: #fff;
+    border-radius: 12px;
   }
 </style>
-<div class="container-fluid p-0">
-    <div id="carouselExample" class="carousel slide">
-  <div class="carousel-inner" style="height: 100%;">
-    <div class="carousel-item active" style="height: 100%;">
-      <img src="{% static 'images/a.jpg' %}" alt="Image A">
-      <div class="carousel-caption">
-        <h5>Premium Ice Cream Selection</h5>
-        <p>Discover our finest collection of homemade ice creams</p>
-      </div>
-    </div>
-    <div class="carousel-item" style="height: 100%;">
-      <img src="{% static 'images/b.jpg' %}" alt="Image B">
-      <div class="carousel-caption">
-        <h5>Fresh Dairy Products</h5>
-        <p>Made with the finest ingredients</p>
-      </div>
-    </div>
-    <div class="carousel-item" style="height: 100%;">
-      <img src="{% static 'images/c.jpg' %}" alt="Image C">
-      <div class="carousel-caption">
-        <h5>Quality Assurance</h5>
-        <p>Every product is crafted with care and quality</p>
-      </div>
-    </div>
-  </div>
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
 
-
-
-
-
-
-<div class="container my-5">
-  <h1 class="text-center mb-4">Select from our range of Ice</h1>
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/a.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
+<section class="container py-4 py-lg-5">
+  <div class="hero-wrap p-4 p-lg-5">
+    <span class="hero-orb orb-1"></span>
+    <span class="hero-orb orb-2"></span>
+    <div class="row g-4 align-items-center hero-content">
+      <div class="col-lg-6">
+        <span class="badge text-bg-warning mb-3 px-3 py-2">Handcrafted Since Day One</span>
+        <h1 class="display-4 fw-bold">A Bigger Scoop of Flavor, Freshness, and Fun</h1>
+        <p class="lead mt-3 mb-4">
+          Premium ice-creams, fresh milk, buttery essentials, and celebration-ready dessert boxes. Built for everyday joy and special moments.
+        </p>
+        <div class="d-flex flex-wrap gap-2">
+          <a href="/services/" class="btn btn-light btn-lg">Browse Services</a>
+          <a href="/contact/" class="btn btn-outline-light btn-lg">Book Bulk Order</a>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/b.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
+      <div class="col-lg-6">
+        <div id="homeCarousel" class="carousel slide rounded-4 overflow-hidden shadow-lg">
+          <div class="carousel-inner">
+            {% for item in featured_products %}
+              <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                <img src="{{ item.image }}" class="d-block w-100" style="height: 430px; object-fit: cover;" alt="{{ item.name }}">
+                <div class="carousel-caption text-start bg-dark bg-opacity-50 rounded-3 p-3">
+                  <h5>{{ item.name }}</h5>
+                  <p class="mb-0">{{ item.description }}</p>
+                </div>
+              </div>
+            {% endfor %}
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/c.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/a.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/b.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/c.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/a.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/b.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/c.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/a.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card shadow-sm">
-        <img src="{% static 'images/b.jpg' %}" alt="Ice Cream" class="card-img-top" style="object-fit: cover; height: 225px; width: 100%; display: block;">
-        <div class="card-body">
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-body-secondary">9 mins</small>
-          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>
 
+<section class="container pb-5">
+  <div class="row g-3">
+    <div class="col-6 col-lg-3">
+      <div class="stat-card p-3 p-lg-4 text-center h-100">
+        <h3 class="fw-bold mb-1">25+</h3>
+        <p class="mb-0 text-muted">Unique Flavors</p>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="stat-card p-3 p-lg-4 text-center h-100">
+        <h3 class="fw-bold mb-1">12K+</h3>
+        <p class="mb-0 text-muted">Happy Customers</p>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="stat-card p-3 p-lg-4 text-center h-100">
+        <h3 class="fw-bold mb-1">365</h3>
+        <p class="mb-0 text-muted">Days Fresh Supply</p>
+      </div>
+    </div>
+    <div class="col-6 col-lg-3">
+      <div class="stat-card p-3 p-lg-4 text-center h-100">
+        <h3 class="fw-bold mb-1">90 min</h3>
+        <p class="mb-0 text-muted">Avg Delivery Time</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container pb-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="section-title mb-0">Explore by Category</h2>
+    <a href="/services/" class="btn btn-sm btn-outline-dark">All Categories</a>
+  </div>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <a href="/services/ice-cream/" class="text-decoration-none">
+        <div class="highlight-card" style="background-image: url('{% static 'images/a.jpg' %}');">
+          <div class="highlight-body">
+            <h4>Ice Creams</h4>
+            <p class="mb-0">Classic, premium, fruity, and limited-edition scoops.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="/services/milk/" class="text-decoration-none">
+        <div class="highlight-card" style="background-image: url('https://images.unsplash.com/photo-1523475472560-d2df97ec485c?auto=format&fit=crop&w=1200&q=80');">
+          <div class="highlight-body">
+            <h4>Milk Range</h4>
+            <p class="mb-0">Daily fresh milk packs for family, cafe, and bakery use.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4">
+      <a href="/services/butter/" class="text-decoration-none">
+        <div class="highlight-card" style="background-image: url('https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?auto=format&fit=crop&w=1200&q=80');">
+          <div class="highlight-body">
+            <h4>Butter Specials</h4>
+            <p class="mb-0">Smooth, creamy, and flavored butters for every kitchen.</p>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="container pb-5">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="section-title mb-0">Customer Favorites</h2>
+    <a href="/search/?q=ice" class="btn btn-sm btn-outline-dark">Search More</a>
+  </div>
+  <div class="row g-4">
+    {% for product in top_products %}
+      <div class="col-12 col-md-6 col-xl-4">
+        <div class="card h-100 shadow-sm hover-card border-0">
+          <img src="{{ product.image }}" class="card-img-top" style="height: 240px; object-fit: cover;" alt="{{ product.name }}">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-start">
+              <h5 class="card-title mb-1">{{ product.name }}</h5>
+              <span class="badge text-bg-light border">{{ product.category }}</span>
+            </div>
+            <p class="card-text text-muted mt-2 mb-3">{{ product.description }}</p>
+            <div class="d-flex justify-content-between align-items-center">
+              <span class="fw-semibold">{{ product.price }}</span>
+              <a href="/contact/" class="btn btn-sm btn-brand">Order Now</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="container pb-5">
+  <div class="promo-banner p-4 p-lg-5">
+    <div class="row g-4 align-items-center">
+      <div class="col-lg-8">
+        <h2 class="fw-bold mb-2">Planning a Party or Office Event?</h2>
+        <p class="mb-0">Get customized dessert combos, bulk packs, and scheduled delivery support.</p>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="/contact/" class="btn btn-light btn-lg">Get a Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container pb-5">
+  <h2 class="section-title mb-3">What Customers Say</h2>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="testimonial p-3 h-100 shadow-sm">
+        <p class="mb-2">"Best chocolate scoop in town. Smooth texture and rich flavor every time."</p>
+        <small class="text-muted">Aarav, Regular Customer</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="testimonial p-3 h-100 shadow-sm">
+        <p class="mb-2">"Their milk and butter quality is super consistent. Great for my cafe."</p>
+        <small class="text-muted">Rhea, Cafe Owner</small>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="testimonial p-3 h-100 shadow-sm">
+        <p class="mb-2">"Ordered dessert boxes for a birthday and delivery was right on time."</p>
+        <small class="text-muted">Kunal, Event Planner</small>
+      </div>
+    </div>
+  </div>
+</section>
 {% endblock body %}

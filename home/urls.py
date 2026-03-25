@@ -22,5 +22,10 @@ urlpatterns = [
     path("", views.index, name="home"),
     path("about/", views.about, name="about"),
     path("contact/", views.contact, name="contact"),
-    path("services/", views.services, name="services")
+    path("services/", views.services, name="services"),
+    path("services/<str:category>/", views.service_detail, name="service_detail"),
+    path("search/", views.search, name="search"),
+    path("register/", views.register_user, name="register"),
+    path("login/", views.login_user, name="login"),
+    path("logout/", views.logout_user, name="logout"),
 ]
