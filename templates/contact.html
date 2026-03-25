@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}Contact Us{% endblock title %}
+
+{% block body %}
+<style>
+  #carouselExample {
+    width: 100%;
+    height: 70vh;
+    margin: 0;
+    position: relative;
+  }
+  #carouselExample img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+  .carousel-caption {
+    position: absolute;
+    bottom: 45px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 15px;
+    text-align: center;
+    color: white;
+  }
+</style>
+<div class="container-fluid p-0 mb-4">
+    <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner" style="height: 100%;">
+    <div class="carousel-item active" style="height: 100%;">
+      <img src="{% static 'images/a.jpg' %}" alt="Image A">
+      <div class="carousel-caption">
+        <h5>Premium Ice Cream Selection</h5>
+        <p>Discover our finest collection of homemade ice creams</p>
+      </div>
+    </div>
+  </div> 
+  
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExample" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+</div>
+
+
+
+
+<div class="container mt-4 py-4">
+<h1 class="text-center">Contact Us</h1>
+<form method="post" action="/contact/">
+{% csrf_token %}
+<div class="mb-3">
+  <label for="name" class="form-label">Name</label>
+  <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+</div>
+<div class="mb-3">
+  <label for="email" class="form-label">Email address</label>
+  <input type="email" class="form-control" id="email" name="email" placeholder="Enter your email address">
+</div>
+<div class="mb-3">
+  <label for="phone" class="form-label">Phone Number</label>
+  <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter your phone number">
+</div>
+<div class="mb-3">
+  <label for="desc" class="form-label">Tell me about what you want to contact me for.</label>
+  <input type="text" class="form-control" id="desc" name="desc" placeholder="Enter your message">
+</div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% comment %} <div class="mb-3">
+<label for="exampleFormControlInput1" class="form-label">Example select</label>
+<select class="form-select" aria-label="Default select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+</div>
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Example multiple select</label>
+<select class="form-select" size="3" aria-label="Size 3 select example">
+  <option selected>Open this select menu</option>
+  <option value="1">One</option>
+  <option value="2">Two</option>
+  <option value="3">Three</option>
+</select>
+</div>
+<div class="mb-3">
+  <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
+  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+</div> {% endcomment %}
+
+
+{% endblock body %}
